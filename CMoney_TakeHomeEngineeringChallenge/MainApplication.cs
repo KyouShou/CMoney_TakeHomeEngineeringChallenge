@@ -67,7 +67,7 @@ namespace CMoney_TakeHomeEngineeringChallenge
 
             while (true)
             {
-                Console.WriteLine("請輸入起始日期(格式範例：20200503)");
+                Console.WriteLine("請輸入起始日期(格式範例：20200507)");
                 var startDate = Console.ReadLine();
 
                 if (service.ChkIsDate(startDate))
@@ -79,14 +79,14 @@ namespace CMoney_TakeHomeEngineeringChallenge
                 }
                 else
                 {
-                    Console.WriteLine("日期格式輸入錯誤，請再試一次(格式範例：20200503)");
+                    Console.WriteLine("日期格式輸入錯誤，請再試一次(格式範例：20200507)");
                 }
             }
 
 
             while (true)
             {
-                Console.WriteLine("請輸入結束日期(格式範例：20200503)");
+                Console.WriteLine("請輸入結束日期(格式範例：20200507)");
                 var endDate = Console.ReadLine();
                 if (service.ChkIsDate(endDate))
                 {
@@ -97,7 +97,7 @@ namespace CMoney_TakeHomeEngineeringChallenge
                 }
                 else
                 {
-                    Console.WriteLine("日期格式輸入錯誤，請再試一次(格式範例：20200503)");
+                    Console.WriteLine("日期格式輸入錯誤，請再試一次(格式範例：20200507)");
                 }
             }
 
@@ -129,7 +129,7 @@ namespace CMoney_TakeHomeEngineeringChallenge
 
             while (true)
             {
-                Console.WriteLine("請輸入指定日期(格式範例：20200503)");
+                Console.WriteLine("請輸入指定日期(格式範例：20200507)");
                 var targetDate = Console.ReadLine();
                 if (service.ChkIsDate(targetDate))
                 {
@@ -139,7 +139,7 @@ namespace CMoney_TakeHomeEngineeringChallenge
                 }
                 else
                 {
-                    Console.WriteLine("日期格式輸入錯誤，請再試一次(格式範例：20200503)");
+                    Console.WriteLine("日期格式輸入錯誤，請再試一次(格式範例：20200507)");
                 }
             }
 
