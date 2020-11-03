@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace CMoney_TakeHomeEngineeringChallenge.Model
 {
-    public class SecuritiesSymbolAndDateModel
+    public class DaysAndDateModel
     {
-        public string SecuritiesSymbol { set; get; }
+        public string Days { set; get; }
         public string StartDate { set; get; }
         public string EndDate { set; get; }
     }

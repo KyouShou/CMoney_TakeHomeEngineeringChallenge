@@ -53,6 +53,7 @@
     <Compile Include="CommonService.cs" />
     <Compile Include="MainApplication.cs" />
     <Compile Include="Model\CSVModel.cs" />
+    <Compile Include="Model\DaysAndDateModel.cs" />
     <Compile Include="Model\RankingAndDateModel.cs" />
     <Compile Include="Model\SecuritiesSymbolAndDateModel.cs" />
     <Compile Include="Program.cs" />

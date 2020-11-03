@@ -10,6 +10,7 @@ namespace CMoney_TakeHomeEngineeringChallenge
     {
         static void Main(string[] args)
         {
+            new MainApplication().Start();
         }
     }
 }

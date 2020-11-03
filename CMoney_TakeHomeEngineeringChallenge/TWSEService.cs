@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace CMoney_TakeHomeEngineeringChallenge
@@ -45,17 +46,21 @@ namespace CMoney_TakeHomeEngineeringChallenge
 
                 sr.Close();
 
+                //周末假日無資料，csvString會是空字串，return空的List
+                if (String.IsNullOrEmpty(csvString))
+                {
+                    return new List<CSVModel>();
+                }
+
                 //把結尾的說明及空白行數去掉
                 csvString = csvString.Substring(0, csvString.IndexOf("說明：") - 4);
 
                 //將字串轉換為model的List後輸出
                 var result = Convert_CSVString_To_CSVModel(csvString, targetDate);
 
-                var searchModel = result.Find(x => x.SecuritiesSymbol == "9958");
-
                 return result;
             }
-            catch
+            catch(Exception e)
             {
                 throw new Exception("連接台灣證券交易所取得資料時發生問題，請確認網路連線是否正常、台灣證券交易所伺服器是否維修");
             }
@@ -74,7 +79,7 @@ namespace CMoney_TakeHomeEngineeringChallenge
                 //計算開始日期和結束日期相差幾天，計算出相差天數後+1才能讓迴圈進行正確次數的迴圈
                 var startDateTime = service.Parse_yyyyMMdd_To_DateTime(startDate);
                 var endDateTime = service.Parse_yyyyMMdd_To_DateTime(endDate);
-                int days = (int)(endDateTime - endDateTime).TotalDays + 1;
+                int days = (int)(endDateTime - startDateTime).TotalDays + 1;
 
                 var targetDate = service.Parse_yyyyMMdd_To_DateTime(startDate);
 
@@ -84,13 +89,14 @@ namespace CMoney_TakeHomeEngineeringChallenge
                     var csvModelList = GetCSVFromTWSE(targetDate.ToString("yyyyMMdd"));
                     result = result.Concat(csvModelList).ToList();
                     //把目標日期+1天，用以下次迴圈呼叫資料
-                    targetDate.AddDays(1);
+                    targetDate = targetDate.AddDays(1);
+                    Thread.Sleep(5000);
                 }
 
                 return result;
 
             }
-            catch
+            catch (Exception e)
             {
                 throw new Exception("連接台灣證券交易所取得資料時發生問題，請確認網路連線是否正常、台灣證券交易所伺服器是否維修");
             }
